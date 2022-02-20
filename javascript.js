@@ -16,8 +16,12 @@ function playComputer(){
     let playerChoice=getPlayerChoice();
     console.log(`You selected: ${playerChoice}`);
     //select Rock Paper Scissor for computer
-
+    let rockPaperScissorsArray=['rock','paper','scissors'];
+    let computerChoice=rockPaperScissorsArray.at(Math.random()*3)
+    console.log(`The computer selected: ${computerChoice}`);
     //compare player and computer choices and output
+    let roundWinner=getWinner(playerChoice,computerChoice);
+    console.log(roundWinner);
 }
 function getPlayerChoice() {
     let keepGoing=true;
@@ -34,6 +38,37 @@ function getPlayerChoice() {
         }
     }
     return playerChoiceLowered;
+}
+
+function getWinner(playerChoice,computerChoice) {
+    if (playerChoice===computerChoice) {
+        console.log(`Player choice of ${playerChoice} and computer choice of ${computerChoice} results in a tie!`);
+        return 'tie';
+    } else if (playerChoice==='rock') {
+        if (computerChoice==='scissors') {
+            console.log("Player choice of rock beats computer's scissors! 😝");
+            return 'playerwin';
+        } else {
+            console.log("Player choice of rock loses to computer's paper! 😭");
+            return 'computerwin';
+        }
+    } else if (playerChoice==='paper') {
+        if (computerChoice==='rock') {
+            console.log("Player choice of paper beater computer's rock! 🥳 ");
+            return "playerwin";
+        } else {
+            console.log("Player choice of paper loses to computer's scissors! 🤬 " );
+            return "computerwin";
+        }
+    } else {
+        if (computerChoice='paper') {
+            console.log("Player choice of scissors beats computer's paper! 🤩 " ); 
+            return "playerwin";
+        } else { 
+            console.log("Player choice of scissors loses to computer's rock! 😱 " );
+            return "computerwin";
+        }
+    }
 }
 playComputer();
 
