@@ -21,7 +21,8 @@ function playRound(){
     console.log(`The computer selected: ${computerChoice}`);
     //compare player and computer choices and output
     let roundWinner=getWinner(playerChoice,computerChoice);
-    console.log(roundWinner);
+    // console.log(roundWinner);
+    return roundWinner;
 }
 function getPlayerChoice() {
     let keepGoing=true;
@@ -71,9 +72,36 @@ function getWinner(playerChoice,computerChoice) {
     }
 }
 
-playRound();
-// function game() {
-//     let computerScore=0;
-//     let playerScore=0;
-//     playRound();
-// }
+// playRound();
+
+//Function to play a game of first to five wins
+function game() {
+    console.log("You are going to play Rock Paper Scissors against the computer up to a total score of 5 points");
+    //create a counter for computer score and player score to keep track
+    let computerScore=0;
+    let playerScore=0;
+//  loop until computer or player score equals 5
+    let roundResult;
+    let roundCounter=1;
+    while (computerScore<5 && playerScore<5) {
+//      call playRound function and assign result of round to a variable
+        console.log("----------------*****NEW ROUND*****------------------------");
+        console.log(`ROUND #${roundCounter}`)
+        roundResult=playRound();
+// Depending on result of playRound increment computer or player score
+        if(roundResult==='playerwin') {
+            playerScore++;
+        } else if (roundResult==='computerwin'){
+            computerScore++;
+        }
+        console.log(`Current Score is \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
+        roundCounter++;
+    }
+    if(playerScore>computerScore) {
+        console.log("Congratulations!!! You Win!!! 😄");
+    } else {
+        console.log("To Bad, you lose! Try again!!! 😔");
+    }
+}
+
+game();
