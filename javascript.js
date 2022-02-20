@@ -12,11 +12,28 @@
 
 //computer play
 //take players input for Rock Paper Scissors
+function playComputer(){
+    let playerChoice=getPlayerChoice();
+    console.log(`You selected: ${playerChoice}`);
+    //select Rock Paper Scissor for computer
 
-   //perform check that player input is valid
-
-//select Rock Paper Scissor for computer
-
-//compare player and computer choices and output
-
+    //compare player and computer choices and output
+}
+function getPlayerChoice() {
+    let keepGoing=true;
+    let playerChoice;
+    let playerChoiceLowered;
+    while(keepGoing) {
+        playerChoice= prompt("Please enter Rock Paper or Scissors");
+        playerChoiceLowered=playerChoice.toLowerCase();
+        //perform check that player input is valid
+        if (playerChoiceLowered==='rock' || playerChoiceLowered==='paper' || playerChoiceLowered==='scissors') {
+            keepGoing=false;
+        } else {
+            console.log(`Your input of "${playerChoice}" is not valid, please try again.`);
+        }
+    }
+    return playerChoiceLowered;
+}
+playComputer();
 
