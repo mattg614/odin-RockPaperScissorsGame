@@ -12,7 +12,7 @@
 
 //computer play
 //take players input for Rock Paper Scissors
-function playComputer(){
+function playRound(){
     let playerChoice=getPlayerChoice();
     console.log(`You selected: ${playerChoice}`);
     //select Rock Paper Scissor for computer
@@ -61,7 +61,7 @@ function getWinner(playerChoice,computerChoice) {
             return "computerwin";
         }
     } else {
-        if (computerChoice='paper') {
+        if (computerChoice==='paper') {
             console.log("Player choice of scissors beats computer's paper! 🤩 " ); 
             return "playerwin";
         } else { 
@@ -70,5 +70,10 @@ function getWinner(playerChoice,computerChoice) {
         }
     }
 }
-playComputer();
 
+playRound();
+// function game() {
+//     let computerScore=0;
+//     let playerScore=0;
+//     playRound();
+// }
