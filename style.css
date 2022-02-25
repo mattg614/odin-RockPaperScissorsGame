@@ -1,0 +1,11 @@
+body {
+    background-image: url(./images/henrique-macedo-8RzMsxk3wgg-unsplash.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+div {
+    background-color: whitesmoke;
+}
