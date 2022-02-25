@@ -12,7 +12,7 @@
 
 //computer play
 //take players input for Rock Paper Scissors
-function playRound(playerChoice){
+function playRound(playerChoice, playerScoreSel,computerScoreSel){
     // let playerChoice=getPlayerChoice();
     //select Rock Paper Scissor for computer
     let rockPaperScissorsArray=['rock','paper','scissors'];
@@ -20,12 +20,28 @@ function playRound(playerChoice){
     //compare player and computer choices and output
     let roundWinner=getWinner(playerChoice,computerChoice);
     // console.log(roundWinner);
+    const score=document.createElement('div');
+    score.classList.add()
+    let computerScore=computerScoreSel.textContent.at(-1);
+    let playerScore=playerScoreSel.textContent.at(-1);
+    if (roundWinner==='computerwin') computerScore++;
+    else if (roundWinner==='playerwin') playerScore++;
+    
+    computerScoreSel.textContent=`Computer Score is: ${computerScore}`;
+    playerScoreSel.textContent=`Player Score is: ${playerScore}`;
+    
     return roundWinner;
 }
 
 function getWinner(playerChoice,computerChoice) {
     //Display player choice to the DOM
     const results=document.querySelector('#resultText');
+
+    //check if any children in resultText and if so remove them before printing next round
+    while (results.firstChild) {
+        results.removeChild(results.firstChild);
+    }
+
     const playerSelectionText=document.createElement('div');
     playerSelectionText.classList.add('resultsContent');
     playerSelectionText.textContent= `You selected: ${playerChoice}`;
@@ -78,17 +94,24 @@ function getWinner(playerChoice,computerChoice) {
 
 // playRound();
 
+
 function getPlayerChoice(){
     // const buttonBox=
+    let res;
     const buttons=document.querySelector('.RPS-Buttons').querySelectorAll('button');
+    const playerScore=document.querySelector('#playerScore');
+    const computerScore=document.querySelector('#computerScore');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
-            playRound(button.id);
-        })
-    });
+            
+            playRound(button.id,playerScore,computerScore);
 
+        })
+
+    });
+    console.log(res);
 }
-getPlayerChoice();
+console.log(getPlayerChoice());
 //Function to play a game of first to five wins
 // function game() {
 //     console.log("You are going to play Rock Paper Scissors against the computer up to a total score of 5 points");
@@ -102,7 +125,7 @@ getPlayerChoice();
 // //      call playRound function and assign result of round to a variable
 //         console.log("----------------*****NEW ROUND*****------------------------");
 //         console.log(`ROUND #${roundCounter}`)
-//         roundResult=playRound();
+//         roundResult=getPlayerChoice();
 // // Depending on result of playRound increment computer or player score
 //         if(roundResult==='playerwin') {
 //             playerScore++;
