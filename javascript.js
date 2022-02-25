@@ -30,7 +30,28 @@ function playRound(playerChoice, playerScoreSel,computerScoreSel){
     computerScoreSel.textContent=`Computer Score is: ${computerScore}`;
     playerScoreSel.textContent=`Player Score is: ${playerScore}`;
     
+    if(computerScore===5 || playerScore===5) {
+        endGame(computerScore,playerScore);
+
+    }
     return roundWinner;
+}
+
+function endGame(computerScore,playerScore) {
+    const results=document.querySelector('#gameResults');
+    const buttons=document.querySelector('.RPS-Buttons').querySelectorAll('button');
+    buttons.forEach((button) => {
+        button.disabled=true;
+    });
+    const gameOver=document.createElement('h2');
+    gameOver.classList.add("results-Text");
+    if (computerScore>playerScore) {
+        gameOver.textContent="The Computer has won!!!😩"
+    } else {
+        gameOver.textContent="The Player has won!!! 🤑"
+    }
+    results.appendChild(gameOver);
+
 }
 
 function getWinner(playerChoice,computerChoice) {
@@ -96,8 +117,6 @@ function getWinner(playerChoice,computerChoice) {
 
 
 function getPlayerChoice(){
-    // const buttonBox=
-    let res;
     const buttons=document.querySelector('.RPS-Buttons').querySelectorAll('button');
     const playerScore=document.querySelector('#playerScore');
     const computerScore=document.querySelector('#computerScore');
@@ -109,8 +128,11 @@ function getPlayerChoice(){
         })
 
     });
-    console.log(res);
 }
+const refreshButton=document.querySelector('#refresh');
+refreshButton.addEventListener('click', () => {
+    window.location.reload();
+});
 console.log(getPlayerChoice());
 //Function to play a game of first to five wins
 // function game() {
