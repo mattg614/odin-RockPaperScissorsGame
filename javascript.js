@@ -14,62 +14,66 @@
 //take players input for Rock Paper Scissors
 function playRound(playerChoice){
     // let playerChoice=getPlayerChoice();
-    console.log(`You selected: ${playerChoice}`);
     //select Rock Paper Scissor for computer
     let rockPaperScissorsArray=['rock','paper','scissors'];
     let computerChoice=rockPaperScissorsArray.at(Math.random()*3)
-    console.log(`The computer selected: ${computerChoice}`);
     //compare player and computer choices and output
     let roundWinner=getWinner(playerChoice,computerChoice);
     // console.log(roundWinner);
     return roundWinner;
 }
-// function getPlayerChoice() {
-//     let keepGoing=true;
-//     let playerChoice;
-//     let playerChoiceLowered;
-//     while(keepGoing) {
-//         playerChoice= prompt("Please enter Rock Paper or Scissors");
-//         playerChoiceLowered=playerChoice.toLowerCase();
-//         //perform check that player input is valid
-//         if (playerChoiceLowered==='rock' || playerChoiceLowered==='paper' || playerChoiceLowered==='scissors') {
-//             keepGoing=false;
-//         } else {
-//             console.log(`Your input of "${playerChoice}" is not valid, please try again.`);
-//         }
-//     }
-//     return playerChoiceLowered;
-// }
 
 function getWinner(playerChoice,computerChoice) {
+    //Display player choice to the DOM
+    const results=document.querySelector('#resultText');
+    const playerSelectionText=document.createElement('div');
+    playerSelectionText.classList.add('resultsContent');
+    playerSelectionText.textContent= `You selected: ${playerChoice}`;
+    console.log(`You selected: ${playerChoice}`);
+    results.appendChild(playerSelectionText);
+
+    //Display Computer Choice to the DOM
+    const computerSelectionText=document.createElement('div');
+    computerSelectionText.classList.add('resultsContent');
+    computerSelectionText.textContent=`The computer selected: ${computerChoice}`;
+    results.appendChild(computerSelectionText);
+    console.log(`The computer selected: ${computerChoice}`);
+    let roundResultText;
+    let roundResult;
     if (playerChoice===computerChoice) {
-        console.log(`Player choice of ${playerChoice} and computer choice of ${computerChoice} results in a tie!`);
-        return 'tie';
+        roundResultText=`Player choice of ${playerChoice} and computer choice of ${computerChoice} results in a tie!`;
+        roundResult='tie';
     } else if (playerChoice==='rock') {
         if (computerChoice==='scissors') {
-            console.log("Player choice of rock beats computer's scissors! 😝");
-            return 'playerwin';
+            roundResultText=("Player choice of rock beats computer's scissors! 😝");
+            roundResult='playerwin';
         } else {
-            console.log("Player choice of rock loses to computer's paper! 😭");
-            return 'computerwin';
+            roundResultText=("Player choice of rock loses to computer's paper! 😭");
+            roundResult='computerwin';
         }
     } else if (playerChoice==='paper') {
         if (computerChoice==='rock') {
-            console.log("Player choice of paper beater computer's rock! 🥳 ");
-            return "playerwin";
+            roundResultText=("Player choice of paper beats computer's rock! 🥳 ");
+            roundResult="playerwin";
         } else {
-            console.log("Player choice of paper loses to computer's scissors! 🤬 " );
-            return "computerwin";
+            roundResultText=("Player choice of paper loses to computer's scissors! 🤬 " );
+            roundResult="computerwin";
         }
     } else {
         if (computerChoice==='paper') {
-            console.log("Player choice of scissors beats computer's paper! 🤩 " ); 
-            return "playerwin";
+            roundResultText=("Player choice of scissors beats computer's paper! 🤩 " ); 
+            roundResult="playerwin";
         } else { 
-            console.log("Player choice of scissors loses to computer's rock! 😱 " );
-            return "computerwin";
+            roundResultText=("Player choice of scissors loses to computer's rock! 😱 " );
+            roundResult="computerwin";
         }
     }
+    const DOMroundResultText=document.createElement('div');
+    DOMroundResultText.classList.add('resultsContent');
+    DOMroundResultText.textContent=roundResultText;
+    results.appendChild(DOMroundResultText);
+    console.log(roundResultText);
+    return roundResult;
 }
 
 // playRound();
