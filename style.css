@@ -4,8 +4,66 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.topText {
+    text-align: center;
+    background-image: none;
+    color: yellow;
+    font-size: x-large;
 }
 
-div {
-    background-color: whitesmoke;
+.container {
+    width: 600px;
+    height: 300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: none;
+    padding: 5px;
+    gap: 5px;
+    font-size: large;
+    color: 
+}
+
+#gameResults > * {
+    color: red;
+    font-size: xx-large;
+}
+.RPS-Buttons, .results, .results>* {
+    background-image: none;
+}
+.selection {
+    height: 175px;
+    width: 175px;
+    background-size: cover;
+    font-size:larger;
+    font-weight: 700;
+}
+.resultsContent {
+    color:rgba(230, 10, 47, 0.863);
+    font-weight: 700;
+}
+#rock {
+    background-image: url(./images/artem-kniaz-Z9_pOnIbgjg-unsplash.jpg);
+    color: aquamarine;
+}
+
+#paper {
+    background-image: url(./images/christa-dodoo-MldQeWmF2_g-unsplash.jpg);
+    color: red;
+}
+
+#scissors {
+    background-image: url(./images/aleksandar-zivkovic-c18q3myyHLU-unsplash.jpg);
+    color: hsl(298, 100%, 51%)
+}
+
+.restart > *{
+    background-color:hsl(355, 71%, 57%)
 }

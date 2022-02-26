@@ -2,7 +2,6 @@
 //Rock Paper Scissors needs to take the input from the user
 //Compare the input to what the computer has selected
 //Determine who won or if a tie took place
-//All of this will be wrapped in a play game function that continues for 5 rounds
 
 //inputs: players choice of Rock Paper or Scissors
 
@@ -13,28 +12,32 @@
 //computer play
 //take players input for Rock Paper Scissors
 function playRound(playerChoice, playerScoreSel,computerScoreSel){
-    // let playerChoice=getPlayerChoice();
     //select Rock Paper Scissor for computer
     let rockPaperScissorsArray=['rock','paper','scissors'];
     let computerChoice=rockPaperScissorsArray.at(Math.random()*3)
     //compare player and computer choices and output
     let roundWinner=getWinner(playerChoice,computerChoice);
-    // console.log(roundWinner);
+
+    //update DOM for round played
     const score=document.createElement('div');
     score.classList.add()
     let computerScore=computerScoreSel.textContent.at(-1);
     let playerScore=playerScoreSel.textContent.at(-1);
+    
+    //update game score
     if (roundWinner==='computerwin') computerScore++;
     else if (roundWinner==='playerwin') playerScore++;
+    
     
     computerScoreSel.textContent=`Computer Score is: ${computerScore}`;
     playerScoreSel.textContent=`Player Score is: ${playerScore}`;
     
+    //check if the game is over
     if(computerScore===5 || playerScore===5) {
         endGame(computerScore,playerScore);
 
     }
-    return roundWinner;
+
 }
 
 function endGame(computerScore,playerScore) {
