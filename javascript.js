@@ -41,6 +41,7 @@ function playRound(playerChoice, playerScoreSel,computerScoreSel){
 }
 
 function endGame(computerScore,playerScore) {
+    //function to update the dom when the game is over and not allow pressing the buttons any more
     const results=document.querySelector('#gameResults');
     const buttons=document.querySelector('.RPS-Buttons').querySelectorAll('button');
     buttons.forEach((button) => {
@@ -58,14 +59,13 @@ function endGame(computerScore,playerScore) {
 }
 
 function getWinner(playerChoice,computerChoice) {
-    //Display player choice to the DOM
     const results=document.querySelector('#resultText');
 
     //check if any children in resultText and if so remove them before printing next round
     while (results.firstChild) {
         results.removeChild(results.firstChild);
     }
-
+    //Display player choice to DOM
     const playerSelectionText=document.createElement('div');
     playerSelectionText.classList.add('resultsContent');
     playerSelectionText.textContent= `You selected: ${playerChoice}`;
@@ -80,6 +80,8 @@ function getWinner(playerChoice,computerChoice) {
     console.log(`The computer selected: ${computerChoice}`);
     let roundResultText;
     let roundResult;
+
+    //logic to determine who won the round
     if (playerChoice===computerChoice) {
         roundResultText=`Player choice of ${playerChoice} and computer choice of ${computerChoice} results in a tie!`;
         roundResult='tie';
@@ -108,6 +110,8 @@ function getWinner(playerChoice,computerChoice) {
             roundResult="computerwin";
         }
     }
+
+    //Add the result text for the round to the DOM
     const DOMroundResultText=document.createElement('div');
     DOMroundResultText.classList.add('resultsContent');
     DOMroundResultText.textContent=roundResultText;
@@ -116,10 +120,11 @@ function getWinner(playerChoice,computerChoice) {
     return roundResult;
 }
 
-// playRound();
 
 
 function getPlayerChoice(){
+    //get the current player and computer score and pass that in with the button selected to keep track of past rounds
+    //and play a current round.
     const buttons=document.querySelector('.RPS-Buttons').querySelectorAll('button');
     const playerScore=document.querySelector('#playerScore');
     const computerScore=document.querySelector('#computerScore');
@@ -136,35 +141,4 @@ const refreshButton=document.querySelector('#refresh');
 refreshButton.addEventListener('click', () => {
     window.location.reload();
 });
-console.log(getPlayerChoice());
-//Function to play a game of first to five wins
-// function game() {
-//     console.log("You are going to play Rock Paper Scissors against the computer up to a total score of 5 points");
-//     //create a counter for computer score and player score to keep track
-//     let computerScore=0;
-//     let playerScore=0;
-// //  loop until computer or player score equals 5
-//     let roundResult;
-//     let roundCounter=1;
-//     while (computerScore<5 && playerScore<5) {
-// //      call playRound function and assign result of round to a variable
-//         console.log("----------------*****NEW ROUND*****------------------------");
-//         console.log(`ROUND #${roundCounter}`)
-//         roundResult=getPlayerChoice();
-// // Depending on result of playRound increment computer or player score
-//         if(roundResult==='playerwin') {
-//             playerScore++;
-//         } else if (roundResult==='computerwin'){
-//             computerScore++;
-//         }
-//         console.log(`Current Score is \nPlayer: ${playerScore} \nComputer: ${computerScore}`);
-//         roundCounter++;
-//     }
-//     if(playerScore>computerScore) {
-//         console.log("Congratulations!!! You Win!!! 😄");
-//     } else {
-//         console.log("To Bad, you lose! Try again!!! 😔");
-//     }
-// }
-
-// game();
+getPlayerChoice();
