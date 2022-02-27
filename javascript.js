@@ -14,15 +14,15 @@
 function playRound(playerChoice, playerScoreSel,computerScoreSel){
     //select Rock Paper Scissor for computer
     let rockPaperScissorsArray=['rock','paper','scissors'];
-    let computerChoice=rockPaperScissorsArray.at(Math.random()*3)
+    let computerChoice=rockPaperScissorsArray[Math.floor((Math.random()*3))]
     //compare player and computer choices and output
     let roundWinner=getWinner(playerChoice,computerChoice);
 
     //update DOM for round played
     const score=document.createElement('div');
     score.classList.add()
-    let computerScore=computerScoreSel.textContent.at(-1);
-    let playerScore=playerScoreSel.textContent.at(-1);
+    let computerScore=computerScoreSel.textContent[computerScoreSel.textContent.length-1];
+    let playerScore=playerScoreSel.textContent[playerScoreSel.textContent.length-1];
     
     //update game score
     if (roundWinner==='computerwin') computerScore++;
